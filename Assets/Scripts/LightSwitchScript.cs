@@ -5,7 +5,8 @@ using UnityEngine;
 public class LightSwitchScript : MonoBehaviour
 {
 	[SerializeField] private bool isOn;
-
+	private bool closeToPlayer;
+	private float distanceFromPlayer;
 	public GameObject player;
 
     // Start is called before the first frame update
@@ -18,11 +19,16 @@ public class LightSwitchScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            toggleState();
+        distanceFromPlayer  = Vector3.Distance(player.transform.position, this.transform.position);
+        if(distanceFromPlayer <= 0.5f){
+        	closeToPlayer = true;
+        }
+        else{
+        	closeToPlayer = false;
         }
     }
+
+
 
     private void toggleState(){
     	if (isOn == true){
