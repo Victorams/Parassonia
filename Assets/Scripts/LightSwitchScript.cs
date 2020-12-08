@@ -30,7 +30,7 @@ public class LightSwitchScript : MonoBehaviour
 
 
 
-    private void toggleState(){
+    public void toggleState(){
     	if (isOn == true){
     		isOn = false;
     	}else{

@@ -7,7 +7,11 @@ public class PlayerScript : MonoBehaviour
 	private Ray crosshairRay;
     // Start is called before the first frame update
 
+	[SerializeField] private float interactionDistance;
+
 	private LightSwitchScript lightSwitchScript;
+	private RaycastHit hit;
+
 
     void Start()
     {
@@ -19,19 +23,20 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)){
-            Debug.Log("Pressed primary button.");
-        }
+        
 
-
-
-        RaycastHit hit;
-		if (Physics.Raycast(crosshairRay, out hit))
-		{
-		    if (hit.collider.tag.Equals("LightSwitch"))
-		    {
-		         // hit player
-		    }
-		 
+		
+		
+ 
+			if(Physics.Raycast( Camera.main.ScreenPointToRay( Input.mousePosition ), out hit, interactionDistance )){
+				// Then you could find your GO with a specific tag by doing something like:
+				if(hit.collider.tag == "LightSwitch") {
+				    lightSwitchScript = hit.collider.gameObject.GetComponent<LightSwitchScript>();
+				    lightSwitchScript.toggleState();
+				}else{
+				}	
+			}
 		}
+		
     }
 }

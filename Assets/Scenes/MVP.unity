@@ -1233,12 +1233,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060990103}
   m_CullTransparentMesh: 0
+--- !u!1 &1128044506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 927597288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1128044509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0,
     type: 3}
   m_PrefabInstance: {fileID: 927597288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1128044510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128044506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b01c6ca6fd4e4d48864bdb222b5ca17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionDistance: 1
 --- !u!1 &1165406864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4403544536768301438, guid: e0a09f351203e2e4d8960e3a6fdb02e8,
@@ -1585,6 +1604,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOn: 0
   player: {fileID: 0}
+--- !u!64 &1587462734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587462729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
 --- !u!1 &1604537007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 26844662620191305, guid: e0a09f351203e2e4d8960e3a6fdb02e8,
@@ -2124,7 +2157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
       propertyPath: m_TagString
-      value: Lamp
+      value: LightSwitch
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2132,11 +2165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 1.06
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.79
+      value: -9.71
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
       propertyPath: m_LocalRotation.x
