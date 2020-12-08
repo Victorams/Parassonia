@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightSwitchScript : MonoBehaviour
 {
 	[SerializeField] private bool isOn;
+	[SerializeField] private bool energyOn;
 	private bool closeToPlayer;
 	private float distanceFromPlayer;
 	public GameObject player;
@@ -31,10 +32,12 @@ public class LightSwitchScript : MonoBehaviour
 
 
     public void toggleState(){
-    	if (isOn == true){
+    	if ( isOn == true){
+    		
     		isOn = false;
     	}else{
-    		isOn = true;
+    		if(energyOn == true)
+    			isOn = true;
     	}
     }
 
