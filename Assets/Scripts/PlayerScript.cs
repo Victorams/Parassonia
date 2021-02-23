@@ -6,11 +6,15 @@ public class PlayerScript : MonoBehaviour
 {
 	private CharacterController pController;
 	private Ray crosshairRay;
-    // Start is called before the first frame update
+
+	Rigidbody m_Rigidbody;
+	Vector3 m_YAxis;
+	// Start is called before the first frame update
 
 	[SerializeField] private float interactionDistance;
 
 	private LightSwitchScript lightSwitchScript;
+	private DoorScript doorScript;
 	private RaycastHit hit;
 
 	
@@ -23,9 +27,17 @@ public class PlayerScript : MonoBehaviour
     {
 
         crosshairRay =  new Ray(this.transform.position, this.transform.forward);
+		m_YAxis = new Vector3(0, 5, 0);
+		m_Rigidbody = GetComponent<Rigidbody>();
+		//Set up vector for moving the Rigidbody in the y axis
 
 		pController = GetComponent<CharacterController>();
 		defaultHeight = pController.height;
+    }
+
+	public float getInteractionDistance()
+    {
+		return this.interactionDistance;
     }
 
 	void crouch()
@@ -34,6 +46,8 @@ public class PlayerScript : MonoBehaviour
 		print("senta :" + pController.height);
 		if (pController.height > crouchHeight)
 		{
+			m_Rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+			pController.center = new Vector3(0, Mathf.Lerp(0, -2, crouchTime * Time.deltaTime), 0); ;
 			pController.radius = 0.1f;
 			pController.height = Mathf.Lerp(pController.height, crouchHeight, crouchTime * Time.deltaTime);
 		}
@@ -42,7 +56,6 @@ public class PlayerScript : MonoBehaviour
 	void getUp()
     {
 		
-		print("levanta:" + pController.height);
 		if (pController.height < defaultHeight)
 		{
 			float lastHeight = pController.height;
@@ -79,7 +92,20 @@ public class PlayerScript : MonoBehaviour
 				if(hit.collider.tag == "LightSwitch") {
 				    lightSwitchScript = hit.collider.gameObject.GetComponent<LightSwitchScript>();
 				    lightSwitchScript.toggleState();
-				}else{
+				}else if(hit.collider.tag == "Door") {
+
+					doorScript = hit.collider.gameObject.GetComponent<DoorScript>();
+
+                    if (doorScript.isDoorOpen())
+                    {
+						doorScript.close();
+                    }
+                    else
+                    {
+						doorScript.open();
+					}
+					
+					
 				}	
 			}
 		}
